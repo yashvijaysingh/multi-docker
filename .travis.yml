@@ -20,4 +20,15 @@ after_success:
    - docker push yashvs/multi-server
    - docker push yashvs/multi-worker
 
-
+deploy:
+   edge: true
+   provider: elasticbeanstalk
+   region: us-east-1
+   app: multi-docker
+   env: MultiDocker-env
+   bucket_name: elasticbeanstalk-us-east-1-079586930048
+   bucket_path: docker_multi
+   on:
+     branch: master
+   access_key_id: $AWS_ACCESS_KEY
+   secret_access_key: $AWS_SECRET_KEY
